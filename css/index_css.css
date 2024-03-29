@@ -18,6 +18,8 @@ div.header {
     height: 80vh;
 }
 
+
+
 div.logo-name {
     background-color: blue;
     width: 100%;
@@ -33,17 +35,59 @@ div.logo-name {
 
 header {
     width: 100%;
-    height: 100%;
+    height: 75vh;
     background-color: aqua;
     display: flex;
+}
+
+nav {
+    background-color: red;
+    width: 20%;
+    height: 100%;
+}
+div.container-home {
+    background-color: purple;
+    width: 80%;
+    height: 100%;
+    display: flex   ;
+}
+
+div.home-text {
+    background-color: yellow;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.text {
+    width: 280px;
+    text-align: justify;
+    background-color: aqua;
+}
+
+div.home-pic {
+    background-color: orange;
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.pic {
+    background-color: brown;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
 
 div.nav {
     display: flex;
     flex-flow: column wrap;
-    justify-content: flex-start;
     background-color: green;
-    width: 15rem;
+    width: 100%;
     height: 100%;
     justify-content: space-evenly;
     align-items: center;
@@ -71,4 +115,17 @@ div.nav div::after {
     width: 100%;
     height: 2px;
     background-color: purple;
+} 
+
+div.container-estudos {
+    background-color: coral;
+    margin-top: 50px;
+    width: 100%;
+    height: 50vh;
+}   
+
+div.teste {
+    background-color: white;
+    width: 100%;
+    height: 100vh;
 }
