@@ -17,7 +17,7 @@
 
 div.header {
     width: 100%;
-    height: 80vh;
+    height: 100%;
 }
 
 div.logo-name {
@@ -115,6 +115,12 @@ div.home-pic {
 
 div.pic {
     background-color: brown;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+div.pic img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -352,6 +358,10 @@ section.container-projetos {
     overflow: hidden;
 }
 
+.box div:hover {
+    transform: translateY(-3px);
+}
+
 .box div {
     width: 100%;
     height: 100%;
@@ -403,6 +413,8 @@ section.container-avaliacao {
     height: 180px;
     border-left: solid 3px rgb(255, 212, 56);
 	border-bottom: solid 3px rgb(255, 212, 56);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
 }
 
 .box-avaliacao1 {
@@ -485,6 +497,72 @@ footer {
 .footer-bottom p {
     color: white;
 } 
+
+div.content_avaliation-1_part1
+{
+	width: 93.2%;
+	height: 50px;
+	margin-left: 30px;
+}
+
+.foto_pessoa-1
+{
+	border-radius: 80%;
+	width: 50px;
+}
+
+.foto_pessoa-2
+{
+	border-radius: 50%;
+	width: 50px;
+}
+
+div.content_avaliation-1_part1_foto_nome
+{
+	display: flex;
+	align-items: center;
+}
+
+div.content_avaliation-1_part1_foto_nome span
+{
+	font-size: 19px;
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+
+div.content_avaliation-1_part2
+{
+	width: 93.2%;
+	height: 77px;
+}
+
+div.content_avaliation-1_part1_text
+{
+	padding-top: 15px;
+	margin-left: 30px;
+}
+
+div.content_avaliation-1_part3
+{
+	width: 93.2%;
+	height: 50px;
+	margin-left: 30px;
+}
+
+div.content_avaliation-1_part1_thanks
+{
+	padding-top: 15px;
+}
+
+
+
+
+
+
+
+
+
 
 /**********************************************************************************/
 @media screen and (max-width: 340px) {
