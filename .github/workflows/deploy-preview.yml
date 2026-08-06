@@ -1,0 +1,47 @@
+name: Deploy preview
+
+# Publica o site em previews.obonini.dev.br/portfolio/ a cada push na main.
+# Roda também sob demanda pelo botão "Run workflow" na aba Actions.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Uma execução por vez: se dois pushes vierem juntos, o mais novo vence
+# e o antigo é cancelado (evita dois rsync --delete concorrentes).
+concurrency:
+  group: deploy-preview
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar chave SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          # Fixa a identidade do servidor: se o host key mudar, o deploy falha
+          # em vez de conectar cegamente (proteção contra MITM).
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Enviar arquivos via rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key -o UserKnownHostsFile=~/.ssh/known_hosts" \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '.claude/' \
+            --exclude '_backups/' \
+            --exclude '.gitignore' \
+            --exclude 'README.md' \
+            --exclude '.DS_Store' \
+            --exclude 'Thumbs.db' \
+            ./ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/"
+
+      - name: Resultado
+        run: echo "Publicado em https://previews.obonini.dev.br/portfolio/"
